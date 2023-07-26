@@ -169,7 +169,10 @@ export default async (generatorOptions: IGeneratorOptions) => {
   let dereffedDocument: OpenRPC;
 
   try {
-    dereffedDocument = await parseOpenRPCDocument(openrpcDocument);
+    dereffedDocument = await parseOpenRPCDocument(openrpcDocument, {
+      validate: false,
+      dereference: false
+    });
   } catch (e) {
     console.error("Invalid OpenRPC document. Please revise the validation errors below:"); // tslint:disable-line
     console.error(e);
